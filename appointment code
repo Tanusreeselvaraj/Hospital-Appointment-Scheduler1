@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+class Patient {
+    private String name;
+    private int age;
+    private String disease;
+
+    public Patient(String name, int age, String disease) {
+        this.name = name;
+        this.age = age;
+        this.disease = disease;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void displayInfo() {
+        System.out.println("Patient Information:");
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Disease: " + disease);
+    }
+}
+
+class Appointment {
+    private Patient patient;
+    private String doctorName;
+    private String date;
+    private String time;
+
+    public Appointment(Patient patient) {
+        this.patient = patient;
+        this.doctorName = "Dr. Smith";  
+        this.date = "2024-07-15";       
+        this.time = "10:30 AM";         
+    }
+
+    public void scheduleAppointment() {
+        System.out.println("Appointment scheduled for " + patient.getName() + " with " + doctorName + " on " + date + " at " + time);
+        patient.displayInfo();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter patient's name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter patient's age: ");
+        int age = scanner.nextInt();
+        scanner.nextLine(); 
+        System.out.print("Enter patient's disease: ");
+        String disease = scanner.nextLine();
+
+        Patient patient = new Patient(name, age, disease);
+
+        Appointment appointment = new Appointment(patient);
+        appointment.scheduleAppointment();
+    }
+}
+
